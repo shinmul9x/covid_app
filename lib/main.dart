@@ -1,4 +1,4 @@
-import 'package:covid_app/screens/mainpage.dart';
+import 'package:covid_app/screens/main_page.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
         cardTheme: CardTheme(
           color: const Color(0xff333346),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(12),
           ),
         ),
         dividerColor: const Color(0xff585761),

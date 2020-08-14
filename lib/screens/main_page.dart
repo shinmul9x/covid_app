@@ -1,4 +1,4 @@
-import 'package:covid_app/widgets/customdatatable2.dart';
+import 'package:covid_app/widgets/custom_data_table_2.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -66,11 +66,9 @@ class _MainState extends State<MainPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              // Country pick
               Card(
                 color: componentColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
                 child: Padding(
                   padding: const EdgeInsets.only(
                     left: 16,
@@ -107,6 +105,7 @@ class _MainState extends State<MainPage> {
                 ),
               ),
               SizedBox(height: 16),
+              // total cases
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -126,10 +125,29 @@ class _MainState extends State<MainPage> {
                 ],
               ),
               SizedBox(height: 16),
+              // avoid infection
+              // Column(
+              //   crossAxisAlignment: CrossAxisAlignment.stretch,
+              //   children: [
+              //     Row(
+              //       children: [
+              //         buildAvoidInfectionView('deo khau trang'),
+              //         buildAvoidInfectionView('khong tu tap'),
+              //         buildAvoidInfectionView('giu khoang cach 2m'),
+              //       ],
+              //     ),
+              //     Row(
+              //       children: [
+              // buildAvoidInfectionView('rua tay xat khuan'),
+              // buildAvoidInfectionView('uong nhieu nuoc '),
+              // buildAvoidInfectionView('kiem tra y te neu sot'),
+              //       ],
+              //     ),
+              //   ],
+              // ),
+
+              // 7 days later, chart
               Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
                 color: componentColor,
                 child: Padding(
                   padding: EdgeInsets.only(
@@ -152,11 +170,12 @@ class _MainState extends State<MainPage> {
                               ),
                             ),
                             TextSpan(
-                                text: 'trong 7 ngay qua',
-                                style: TextStyle(
-                                  color: Color(0xff7589a2),
-                                  fontSize: 16,
-                                )),
+                              text: 'trong 7 ngay qua',
+                              style: TextStyle(
+                                color: Color(0xff7589a2),
+                                fontSize: 16,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -221,7 +240,42 @@ class _MainState extends State<MainPage> {
                 ),
               ),
               SizedBox(height: 16),
+              // Ranking
               CustomDataTable2(),
+              SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text('So lieu duoc thong ke boi abcxyz',
+                      style: TextStyle(color: textColor)),
+                ],
+              ),
+              Container(
+                height: 200,
+                child: ListView(
+                  // children: countryList
+                  //     .map<Widget>((e) => buildAvoidInfectionView(e))
+                  //     .toList(),
+                  scrollDirection: Axis.horizontal,
+
+                  children: [
+                    Container(
+                      width: 150,
+                      child: buildAvoidInfectionView('rua tay xat khuan'),
+                    ),
+                    Container(
+                      width: 150,
+                      child: buildAvoidInfectionView('uong nhieu nuoc '),
+                    ),
+                    Container(
+                      width: 150,
+                      child: buildAvoidInfectionView('kiem tra y te neu sot'),
+                    ),
+                  ],
+                ),
+              ),
+
+              SizedBox(height: 16),
             ],
           ),
         ),
@@ -329,6 +383,30 @@ class _MainState extends State<MainPage> {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildAvoidInfectionView(String label) {
+    return Card(
+      margin: EdgeInsets.all(8),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            CircleAvatar(
+              backgroundColor: Colors.white,
+              radius: 36,
+            ),
+            SizedBox(height: 12),
+            Text(
+              label,
+              style: TextStyle(color: Colors.white),
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
       ),
     );

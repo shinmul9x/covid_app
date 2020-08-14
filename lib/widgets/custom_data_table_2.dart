@@ -12,7 +12,7 @@ class CustomDataTable2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => CustomDataTableModel(),
+      create: (_) => CustomDataTableProvider(),
       builder: (context, child) {
         return Card(
           child: Padding(
@@ -71,7 +71,7 @@ class CustomDataTable2 extends StatelessWidget {
                   ],
                   rows: buildDataRow(
                     context,
-                    context.watch<CustomDataTableModel>().focusData,
+                    context.watch<CustomDataTableProvider>().focusData,
                   ),
                 ),
                 SizedBox(height: 8),
@@ -87,9 +87,11 @@ class CustomDataTable2 extends StatelessWidget {
                       ),
                       onPressed: () {
                         if (!context
-                            .read<CustomDataTableModel>()
+                            .read<CustomDataTableProvider>()
                             .isFirstPage()) {
-                          context.read<CustomDataTableModel>().previousPage();
+                          context
+                              .read<CustomDataTableProvider>()
+                              .previousPage();
                         }
                       },
                     ),
@@ -100,9 +102,9 @@ class CustomDataTable2 extends StatelessWidget {
                       ),
                       onPressed: () {
                         if (!context
-                            .read<CustomDataTableModel>()
+                            .read<CustomDataTableProvider>()
                             .isLastPage()) {
-                          context.read<CustomDataTableModel>().nextPage();
+                          context.read<CustomDataTableProvider>().nextPage();
                         }
                       },
                     )
@@ -126,7 +128,7 @@ class CustomDataTable2 extends StatelessWidget {
   }
 
   List<DataRow> buildDataRow(BuildContext context, List<String> list) {
-    int rowsPerPage = context.watch<CustomDataTableModel>().rowsPerPage;
+    int rowsPerPage = context.watch<CustomDataTableProvider>().rowsPerPage;
     List<DataRow> dataRows = [];
 
     for (int i = 0; i < rowsPerPage; ++i) {
@@ -152,7 +154,7 @@ class CustomDataTable2 extends StatelessWidget {
   }
 
   Widget buildPageTableInfo(BuildContext context) {
-    var provider = context.watch<CustomDataTableModel>();
+    var provider = context.watch<CustomDataTableProvider>();
     int lenList = provider.countryList.length;
     int start = provider.startIndex + 1;
     int end = provider.endIndex;
@@ -160,8 +162,8 @@ class CustomDataTable2 extends StatelessWidget {
   }
 }
 
-class CustomDataTableModel extends ChangeNotifier {
-  CustomDataTableModel() {
+class CustomDataTableProvider extends ChangeNotifier {
+  CustomDataTableProvider() {
     countryList = <String>[
       'Viet Nam',
       'Trung Quoc',
