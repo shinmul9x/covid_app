@@ -18,4 +18,4 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Record screen
 
-<img src="/record_screen.gif" width="50%" height="50%"/>
+<img src="/record_screen.gif" width="40%" height="40%"/>
