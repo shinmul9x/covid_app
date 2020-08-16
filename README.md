@@ -18,6 +18,4 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Record screen
 
-![](/record_screen.gif){:height="50%" width="50%"}
-
-<img src="/record_screen.gif" width="250" height="250"/>
+<img src="/record_screen.gif" width="50%" height="50%"/>
